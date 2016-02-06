@@ -1,21 +1,20 @@
-let perpSlopeOne = (-1 * (Float(aX.text!)! - Float(bX.text!)! )) / (Float(aY.text!)! - Float(bY.text!)!)
-            
-            // [0] is the X value; [1] is the Y value
-            let oneEquationXY = [perpSlopeOne*Float(cX.text!)!, Float(cY.text!)!]
-            
-            let bOne = oneEquationXY[1] - oneEquationXY[0]
-            
-            
-            
-            let perpSlopeTwo = (-1 * (Float(bX.text!)! - Float(cX.text!)! )) / (Float(bY.text!)! - Float(cY.text!)!)
-            
-            // [0] is the X value; [1] is the Y value
-            let twoEquationXY = [perpSlopeTwo*Float(aX.text!)!, Float(aY.text!)!]
-            
-            let bTwo = twoEquationXY[1] - twoEquationXY[0]
-            
-            
-            
-            xFinal = (bTwo-bOne) / (perpSlopeOne-perpSlopeTwo)
-            
-            yFinal = (perpSlopeOne*xFinal) + (bOne)
+        let perpSlopeOne = (-1 * (aX - bX)) / (aY - bY)
+        
+        // [0] is the X value; [1] is the Y value
+        let oneEquationXY = [perpSlopeOne*cX, cY]
+        
+        let bOne = oneEquationXY[1] - oneEquationXY[0]
+        
+        
+        
+        let perpSlopeTwo = (-1 * (bX - cX)) / (bY - cY)
+        
+        // [0] is the X value; [1] is the Y value
+        let twoEquationXY = [perpSlopeTwo*aX, aY]
+        
+        let bTwo = twoEquationXY[1] - twoEquationXY[0]
+        
+        xFinal = (bTwo-bOne) / (perpSlopeOne-perpSlopeTwo)
+        
+        //Returns Float array, first entry is xFinal value, second entry is yFinal value. (yFinal value needs xFinal's value to calculate)
+        return [xFinal, (perpSlopeOne*xFinal) + (bOne)]
